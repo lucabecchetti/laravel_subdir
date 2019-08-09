@@ -108,6 +108,26 @@ Now register the provider by adding this line to config/app.php file:
 
 ```App\Providers\HelperServiceProvider::class,```
 
+Now edit the function mapWebRoutes of file RouteServiceProvider.php, like showed below:
+
+```php
+/**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+
+        Route::prefix(App::environment('production') ? env('APP_DIR') : '')
+            ->middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
+    }
+```
+
 That's all, now you can use function subdirAsset instead of asset and subdirMix instead of mix inside your blade files.
 
 ## Switch environment
