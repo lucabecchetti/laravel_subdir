@@ -128,6 +128,10 @@ Now edit the function mapWebRoutes of file RouteServiceProvider.php, like showed
     }
 ```
 
+And import App class in top of file:
+
+```use App;```
+
 That's all, now you can use function subdirAsset instead of asset and subdirMix instead of mix inside your blade files.
 
 ## Switch environment
